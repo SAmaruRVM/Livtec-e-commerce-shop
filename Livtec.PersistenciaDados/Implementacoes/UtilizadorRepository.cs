@@ -55,5 +55,10 @@ namespace Livtec.PersistenciaDados.Implementacoes
         {
             throw new System.NotImplementedException();
         }
+
+        public IEnumerable<Utilizador> SemPaginacao()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

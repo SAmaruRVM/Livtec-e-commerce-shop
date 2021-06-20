@@ -22,6 +22,13 @@ namespace Livtec.Web
                 if (utilizadorLogado != null)
                 {
                     // Então, user está logado
+                    Session["UtilizadorLogado"] = utilizadorLogado;
+
+                    if (utilizadorLogado.TipoUtilizador == TipoUtilizador.Admin)
+                    {
+                        Response.Redirect($"Administrador/{nameof(Index)}.aspx");
+                    }
+
                     LinkMeusDadosPessoais.Visible = true;
                     LinkMinhasEncomendas.Visible = true;
                     DropDownDividerLogout.Visible = true;
@@ -50,6 +57,11 @@ namespace Livtec.Web
                 Utilizador utilizadorLogado = new UserAutenticacao().AutenticarUtilizador(TBEmailLogin.Text, TBPasswordLogin.Text, guidGeradoCookie);
 
                 Session["UtilizadorLogado"] = utilizadorLogado;
+
+                if(utilizadorLogado.TipoUtilizador == TipoUtilizador.Admin)
+                {
+                    Response.Redirect($"Administrador/{nameof(Index)}.aspx");
+                }
 
                 Response.Redirect(Request.RawUrl);
             }

@@ -80,11 +80,16 @@
     <Content Include="Administrador\Recursos\Javascript\yearpicker.js" />
     <Content Include="Ativacao-Conta.aspx" />
     <Content Include="Checkout.aspx" />
+    <Content Include="Detalhes-Livro.aspx" />
     <Content Include="Index.aspx" />
     <Content Include="Meus-Dados.aspx" />
     <Content Include="Minhas-Encomendas.aspx" />
     <Content Include="Quem-Somos.aspx" />
     <Content Include="Recursos\CSS\styles.css" />
+    <Content Include="Recursos\Imagens\Banner-Livros.jpg" />
+    <Content Include="Recursos\Imagens\Imagem-Livro-Placeholder.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Recursos\Javascript\main.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -144,6 +149,13 @@
     </Compile>
     <Compile Include="Default.Master.designer.cs">
       <DependentUpon>Default.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Detalhes-Livro.aspx.cs">
+      <DependentUpon>Detalhes-Livro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Detalhes-Livro.aspx.designer.cs">
+      <DependentUpon>Detalhes-Livro.aspx</DependentUpon>
     </Compile>
     <Compile Include="Extensions\HttpResponseExtensions.cs" />
     <Compile Include="Index.aspx.cs">

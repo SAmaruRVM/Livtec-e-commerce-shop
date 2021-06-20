@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="Recursos/CSS/yearpicker.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/flatly/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sandstone/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css" integrity="sha512-DIW4FkYTOxjCqRt7oS9BFO+nVOwDL4bzukDyDtMO7crjUZhwpyrWBFroq+IqRe6VnJkTpRAS6nhDvf0w+wHmxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -54,15 +54,14 @@
                                 Livros
                             </a>
 
-                            <a class="nav-link" href="backofficeProdutos.aspx">
+                              <a class="nav-link" href="Editoras.aspx">
                                 <div class="sb-nav-link-icon"><i class="fas fa-warehouse"></i></div>
-                                Autores
+                                Editoras
                             </a>
 
-                            <div class="sb-sidenav-menu-heading">Controlo</div>
-                            <a class="nav-link" href="backofficeUtilizadores.aspx">
-                                <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
-                                Editores
+                            <a class="nav-link" href="Autores.aspx">
+                                <div class="sb-nav-link-icon"><i class="fas fa-warehouse"></i></div>
+                                Autores
                             </a>
 
                             <div class="sb-sidenav-menu-heading">Área Reservada</div>

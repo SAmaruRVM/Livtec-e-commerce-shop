@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrador/Admin.Master" AutoEventWireup="true" CodeBehind="Livros.aspx.cs" Inherits="Livtec.Web.Administrador.Produtos" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrador/Admin.Master" AutoEventWireup="true" CodeBehind="Livros.aspx.cs" Inherits="Livtec.Web.Administrador.Produtos" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Livtec Livros - Administração</title>
@@ -6,18 +6,105 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager runat="server"></asp:ScriptManager>
+    <asp:UpdatePanel runat="server" ID="UpdtPanelEliminarAtualizarLivro">
+        <ContentTemplate>
+            <div class="container col-lg-12 mt-2 flex-column d-flex">
+                <button type="button" class="btn btn-primary my-3 w-25 align-self-lg-end" data-toggle="modal" data-target="#modal-novo-livro">Inserir um novo livro</button>
+                <div class="card mb-4 mt-2 shadow-lg">
+                    <div class="card-header bg-dark text-center text-light">
+                        <i class="fas fa-pen-alt"></i>
+                        Livros
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: center; vertical-align: middle;">Id</th>
+                                        <th style="text-align: center; vertical-align: middle;">Título</th>
+                                        <th style="text-align: center; vertical-align: middle;">Preço</th>
+                                        <th style="text-align: center; vertical-align: middle;">NumeroPaginas</th>
+                                        <th style="text-align: center; vertical-align: middle;">Sinopse</th>
+                                        <th style="text-align: center; vertical-align: middle;">ISBN</th>
+                                        <th style="text-align: center; vertical-align: middle;">Idioma</th>
+                                        <th style="text-align: center; vertical-align: middle;">Ano Edição</th>
+                                        <th style="text-align: center; vertical-align: middle;">Capa</th>
+                                        <th style="text-align: center; vertical-align: middle;">Data criação</th>
+                                        <th style="text-align: center; vertical-align: middle;">Nome Editora</th>
+                                        <th style="text-align: center; vertical-align: middle;">Tipo do livro</th>
+                                    </tr>
+                                </thead>
+                                <asp:Repeater runat="server" ID="RptrLivrosTable">
+                                    <HeaderTemplate>
+                                        <tbody class="text-center text-md-center">
+                                    </HeaderTemplate>
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <%# Eval("Id") %>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <%# Eval("Titulo") %>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <%# Eval("Preco") + "€" %>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <%# Eval("NumeroPaginas") %>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <%# Eval("Sinopse") %>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <%# Eval("ISBN") %>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <%# Eval("Idioma") %>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <%# Eval("AnoEdicao") %>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <img style="height:50px;" alt="Capa do livro (Imagem)" <%# (Eval("Imagem") is null) ? "src='../Recursos/Imagens/Imagem-Livro-Placeholder.png'" : $"src='data:image/png;base64,{Convert.ToBase64String((byte[])Eval("Imagem"))}'" %> />
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <%# Eval("DataCriacao") %>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <%# Eval("Editora.Nome") %>
+                                                <button type="button" class="btn btn-primary">
+                                                    Atualizar ou remover esta editora
+                                                </button>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <%# Eval("TipoLivro") %>
+                                            </td>
+                                            <td style="text-align: center; vertical-align: middle;">
+                                                <asp:Button runat="server" ID="BtnAtualizarLivro" Text="Atualizar" CssClass="btn btn-success" />
+                                                <asp:Button runat="server" ID="BtnEliminarLivro" Text="Eliminar" CssClass="btn btn-danger"
+                                                    OnCommand="BtnEliminarLivro_Command" CommandArgument='<%# Eval("Id") %>' />
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
+                                    <FooterTemplate>
+                                        </tbody>
+                                    </FooterTemplate>
+                                </asp:Repeater>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 
-    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal-novo-produto">Adicionar novo produto</button>
-
-    <asp:GridView ID="GVProdutos" runat="server" CssClass="table table-sm table-dark">
-    </asp:GridView>
 
 
-    <div class="modal fade" id="modal-novo-produto" tabindex="-1" aria-labelledby="modal-novo-produto-label" aria-hidden="true">
+    <div class="modal fade" id="modal-novo-livro" tabindex="-1" aria-labelledby="modal-novo-livro-label" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modal-novo-produto-label">Adicionar novo livro</h5>
+                    <h5 class="modal-title font-weight-bold h3" id="modal-novo-livro-label">Adicionar novo livro</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -53,6 +140,8 @@
                                         <asp:RangeValidator runat="server"
                                             CssClass="text-danger text-center m-0"
                                             ControlToValidate="TBPrecoAdicionarLivro"
+                                            MinimumValue="1"
+                                            MaximumValue="999.99"
                                             ErrorMessage="O preço do livro tem que ser maior que 0 obrigatoriamente!"
                                             SetFocusOnError="true"
                                             ValidationGroup="VGAdicionarProduto"
@@ -73,6 +162,8 @@
                                         <asp:RangeValidator runat="server"
                                             CssClass="text-danger text-center m-0"
                                             ControlToValidate="TBNumeroPaginasAdicionarLivro"
+                                            MinimumValue="1"
+                                            MaximumValue="9999999"
                                             ErrorMessage="O número de páginas do livro tem que ser maior que 0 obrigatoriamente!"
                                             SetFocusOnError="true"
                                             ValidationGroup="VGAdicionarProduto"
@@ -162,7 +253,8 @@
 
                             <div class="custom-file mt-2 mb-4 p-2">
                                 <label for="FPCapaImagemLivro" class="custom-file-label">Capa do livro (Imagem)</label>
-                                <asp:FileUpload runat="server" ID="FPCapaImagemLivro" accept="image/*" CssClass="custom-file-input" />
+                                <ajaxToolkit:AsyncFileUpload runat="server" ID="FPCapaImagemLivroAsync" accept="image/*" CssClass="custom-file-input" UploaderStyle="Modern" />
+                                <%-- <asp:FileUpload runat="server" ID="FPCapaImagemLivro" accept="image/*" CssClass="custom-file-input" />--%>
                             </div>
 
 

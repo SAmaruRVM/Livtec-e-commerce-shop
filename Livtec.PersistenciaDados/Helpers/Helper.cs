@@ -4,12 +4,7 @@ namespace Livtec.PersistenciaDados.Helpers
 {
     public static class Helper
     {
-        public static string ConnectionString
-        {
-            get
-            {
-                return ConfigurationManager.ConnectionStrings["SQL-SERVER.Livtec"].ConnectionString;
-            }
-        }
+        public static string ConnectionString => ConfigurationManager.ConnectionStrings["SQL-SERVER.Livtec"].ConnectionString;
     }
 }
+

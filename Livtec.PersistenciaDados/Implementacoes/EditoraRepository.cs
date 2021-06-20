@@ -9,7 +9,7 @@ namespace Livtec.PersistenciaDados.Implementacoes
 {
     public class EditoraRepository : IRepository<int, Editora>
     {
-        public IEnumerable<Editora> TodasEditoras() 
+        public IEnumerable<Editora> SemPaginacao() 
         {
             using(SqlDataReader sqlDataReader = new SqlCommand().ExecutarSpComRetorno(StoredProcedure.UspTodasEditoras))
             {
@@ -26,12 +26,17 @@ namespace Livtec.PersistenciaDados.Implementacoes
 
         public Editora Atualizar(Editora entidade)
         {
-            throw new System.NotImplementedException();
+            new SqlCommand().ExecutarSPSemRetorno(StoredProcedure.UspAtualizarEditora, new Dictionary<string, object>
+            {
+                ["@id"] = entidade.Id,
+                ["@nome"] = entidade.Nome
+            });
+            return entidade;
         }
 
         public Editora EliminarPorId(int id)
         {
-            using (SqlDataReader sqlDataReader = new SqlCommand().ExecutarSpComRetorno(StoredProcedure.UspTodasEditoras, new Dictionary<string, object> 
+            using (SqlDataReader sqlDataReader = new SqlCommand().ExecutarSpComRetorno(StoredProcedure.UspEliminarEditoraPorId, new Dictionary<string, object> 
             {
                 ["@id"] = id
             }))

@@ -10,6 +10,10 @@
         UspUtilizadorPorCookieAutenticacaoGuid,
         UspInserirEditora,
         UspTodasEditoras,
-        UspEliminarEditoraPorId
+        UspEliminarEditoraPorId,
+        UspInserirLivro,
+        UspLivrosPaginacao,
+        UspTodosLivros,
+        UspAtualizarEditora
     }
 }

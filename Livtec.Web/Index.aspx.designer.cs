@@ -15,21 +15,30 @@ namespace Livtec.Web
     {
 
         /// <summary>
-        /// RptrUltimosProdutos control.
+        /// RptrUltimosLivros control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RptrUltimosProdutos;
+        protected global::System.Web.UI.WebControls.Repeater RptrUltimosLivros;
 
         /// <summary>
-        /// RptrProdutos control.
+        /// UpdtPanelAdicionarLivroAoCarrinho control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RptrProdutos;
+        protected global::System.Web.UI.UpdatePanel UpdtPanelAdicionarLivroAoCarrinho;
+
+        /// <summary>
+        /// RptrLivros control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RptrLivros;
     }
 }

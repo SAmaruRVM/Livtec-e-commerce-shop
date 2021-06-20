@@ -4,17 +4,19 @@
     <title>Livtec</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="container py-5 mt-5">
+    <asp:ScriptManager runat="server"></asp:ScriptManager>
+
+    <div class="container-fluid py-5 mt-5 banner-livros">
         <div class="row text-center mb-5">
             <div class="col-lg-7 mx-auto">
-                <h1 class="display-4">Últimos livros adicionados</h1>
+                <h1 class="display-3 text-primary">Últimos livros adicionados</h1>
             </div>
         </div>
 
         <div class="row">
             <div class="col-lg-12 mx-auto">
                 <ul class="list-group shadow">
-                    <asp:Repeater runat="server" ID="RptrUltimosProdutos">
+                    <asp:Repeater runat="server" ID="RptrUltimosLivros">
                         <ItemTemplate>
                             <li class="list-group-item">
                                 <div class="media align-items-lg-center flex-column flex-lg-row p-3">
@@ -42,31 +44,48 @@
         </div>
     </div>
 
-    <div class="album py-5 bg-light">
-        <div class="container">
-            <div class="row">
-                <asp:Repeater runat="server" ID="RptrProdutos">
-                    <ItemTemplate>
-                        <div class="col-md-4">
-                            <div class="card mb-4 shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
-                                    <title>Placeholder</title>
-                                    <rect width="100%" height="100%" fill="#55595c" />
-                                    <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-                                <div class="card-body">
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">Adicionar ao carr</button>
+    <asp:UpdatePanel runat="server" ID="UpdtPanelAdicionarLivroAoCarrinho">
+        <ContentTemplate>
+
+
+            <div class="album py-5 bg-light">
+                <div class="container">
+                    <div class="row">
+                        <asp:Repeater runat="server" ID="RptrLivros">
+                            <ItemTemplate>
+                                <div class="col-md-4">
+                                    <div class="card mb-4 shadow-sm p-4">
+                                        <small class="float-right text-info h4 font-weight-bold">
+                                            <%# Eval("Preco") + "€" %>
+                                        </small>
+                                        <img class="bd-placeholder-img card-img-top" <%# (Eval("Imagem") is null) ? "src='https://turistaprofissional.com/wp-content/uploads/2020/03/booking-confiavel-1.jpg'" : $"src='data:image/png;base64,{Convert.ToBase64String((byte[])Eval("Imagem"))}'"%> />
+                                        <h3 class="text-center">
+                                            <%# Eval("Titulo") %>
+                                        </h3>
+                                        <hr />
+                                        <p class="card-text text-center text-primary"><%# Eval("Sinopse") %></p>
+                                        <div class="d-flex justify-content-center align-items-center">
+                                            <div class="btn-group flex-column w-75">
+                                                <asp:LinkButton runat="server" ID="LKBAdicionarLivroAoCarrinho"
+                                                    class="btn btn-sm btn-secondary btn-block p-2"
+                                                    OnCommand="LKBAdicionarLivroAoCarrinho_Command"
+                                                    CommandArgument='<%# Eval("Id") %>'>
+                                                <i class="fas fa-cart-plus fa-lg"></i>
+                                                Adicionar ao meu carrinho
+                                                </asp:LinkButton>
+                                                <a class="btn btn-sm btn-primary btn-block p-2" href="Detalhes-Livro.aspx?titulo=<%# string.Join("-", Eval("Titulo").ToString().Split(' ')) %>&isbn=<%# Eval("ISBN") %>" target="_blank">
+                                                    <i class="fas fa-info-circle fa-lg"></i>
+                                                    Ver mais detalhes
+                                                </a>
+                                            </div>
                                         </div>
-                                        <small class="text-muted">9 mins</small>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </ItemTemplate>
-                </asp:Repeater>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>

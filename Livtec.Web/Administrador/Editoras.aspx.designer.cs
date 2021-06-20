@@ -15,6 +15,15 @@ namespace Livtec.Web.Administrador
     {
 
         /// <summary>
+        /// UpdtPanelEliminarAtualizarEditora control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdtPanelEliminarAtualizarEditora;
+
+        /// <summary>
         /// RptrEditorasTable control.
         /// </summary>
         /// <remarks>
@@ -22,6 +31,42 @@ namespace Livtec.Web.Administrador
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater RptrEditorasTable;
+
+        /// <summary>
+        /// UpdtPanelAtualizarEditora control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdtPanelAtualizarEditora;
+
+        /// <summary>
+        /// TBNomeAtualizarEditora control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBNomeAtualizarEditora;
+
+        /// <summary>
+        /// HiddenFieldIdEditora control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HiddenFieldIdEditora;
+
+        /// <summary>
+        /// BtnAtualizarEditora control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton BtnAtualizarEditora;
 
         /// <summary>
         /// UpdtPanelInserirEditora control.

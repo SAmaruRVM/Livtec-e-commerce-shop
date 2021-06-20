@@ -4,7 +4,7 @@
 
 <html>
 <head runat="server">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/flatly/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sandstone/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="Recursos/CSS/styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css" integrity="sha512-DIW4FkYTOxjCqRt7oS9BFO+nVOwDL4bzukDyDtMO7crjUZhwpyrWBFroq+IqRe6VnJkTpRAS6nhDvf0w+wHmxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -47,7 +47,7 @@
                 </div>
                 <div class="nav-item dropdown">
                     <button runat="server" type="button" class="nav-link dropdown-toggle btn btn-primary px-5" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-user-circle"></i>
+                        <i class="fas fa-user-circle fa-lg mr-1"></i>
                         Conta
                     </button>
 
@@ -75,7 +75,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modal-registo-label">Criar conta</h5>
+                        <h5 class="modal-title font-weight-bold h3" id="modal-registo-label">Criar conta</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -84,8 +84,8 @@
                         <asp:UpdatePanel runat="server" ID="UpdtPanelRegisto">
                             <ContentTemplate>
                                 <div class="form-group">
-                                    <label for="TBEmailRegisto" class="col-form-label">Email</label>
-                                    <asp:TextBox runat="server" ID="TBEmailRegisto" TextMode="Email" class="form-control rounded-0" />
+                                    <label for="TBEmailRegisto" class="col-form-label">Email<i class="fas fa-at ml-2"></i></label>
+                                    <asp:TextBox runat="server" ID="TBEmailRegisto" TextMode="Email" class="form-control rounded-0" placeholder="O seu email" />
                                     <asp:RequiredFieldValidator runat="server"
                                         CssClass="text-danger text-center m-0"
                                         ControlToValidate="TBEmailRegisto"
@@ -103,8 +103,8 @@
                                 ValidationGroup="VGRegisto"/>--%>
                                 </div>
                                 <div class="form-group">
-                                    <label for="TBPasswordRegisto" class="col-form-label">Password</label>
-                                    <asp:TextBox runat="server" ID="TBPasswordRegisto" TextMode="Password" class="form-control rounded-0" />
+                                    <label for="TBPasswordRegisto" class="col-form-label">Password<i class="fas fa-lock ml-2"></i></label>
+                                    <asp:TextBox runat="server" ID="TBPasswordRegisto" TextMode="Password" class="form-control rounded-0" placeholder="A sua password"/>
                                     <asp:RequiredFieldValidator runat="server"
                                         CssClass="text-danger text-center m-0"
                                         ControlToValidate="TBPasswordRegisto"
@@ -115,8 +115,8 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="TBConfirmacaoPasswordRegisto" class="col-form-label">Confirmação da password</label>
-                                    <asp:TextBox runat="server" ID="TBConfirmacaoPasswordRegisto" TextMode="Password" class="form-control rounded-0" />
+                                    <label for="TBConfirmacaoPasswordRegisto" class="col-form-label">Confirmação da password<i class="fas fa-lock ml-2"></i></label>
+                                    <asp:TextBox runat="server" ID="TBConfirmacaoPasswordRegisto" TextMode="Password" class="form-control rounded-0" placeholder="Confirme a sua password" />
                                     <asp:RequiredFieldValidator runat="server"
                                         CssClass="text-danger text-center m-0"
                                         ControlToValidate="TBConfirmacaoPasswordRegisto"
@@ -165,7 +165,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modal-login-label">Efetuar login</h5>
+                        <h5 class="modal-title font-weight-bold h3" id="modal-login-label">Efetuar login</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -174,8 +174,8 @@
                         <asp:UpdatePanel runat="server">
                             <ContentTemplate>
                                 <div class="form-group">
-                                    <label for="TBEmailLogin" class="col-form-label">Email</label>
-                                    <asp:TextBox runat="server" ID="TBEmailLogin" TextMode="Email" class="form-control rounded-0" />
+                                    <label for="TBEmailLogin" class="col-form-label">Email<i class="fas fa-at ml-2"></i></label>
+                                    <asp:TextBox runat="server" ID="TBEmailLogin" TextMode="Email" class="form-control rounded-0" placeholder="O seu email" />
                                     <asp:RequiredFieldValidator runat="server"
                                         CssClass="text-danger text-center m-0"
                                         ControlToValidate="TBEmailLogin"
@@ -193,8 +193,8 @@
                                 ValidationGroup="VGRegisto"/>--%>
                                 </div>
                                 <div class="form-group">
-                                    <label for="TBPasswordLogin" class="col-form-label">Password</label>
-                                    <asp:TextBox runat="server" ID="TBPasswordLogin" TextMode="Password" class="form-control rounded-0" />
+                                    <label for="TBPasswordLogin" class="col-form-label">Password<i class="fas fa-lock ml-2"></i></label>
+                                    <asp:TextBox runat="server" ID="TBPasswordLogin" TextMode="Password" class="form-control rounded-0" placeholder="A sua password" />
                                     <asp:RequiredFieldValidator runat="server"
                                         CssClass="text-danger text-center m-0"
                                         ControlToValidate="TBPasswordLogin"
@@ -203,13 +203,6 @@
                                         ValidationGroup="VGLogin"
                                         Display="Dynamic" />
                                 </div>
-
-                                <div class="form-group form-check">
-                                    <asp:CheckBox runat="server" ID="CHKXLembrarUtilizador" class="form-check-input" />
-                                    <label class="form-check-label" for="CHKXLembrarUtilizador">Lembrar de mim</label>
-                                </div>
-
-                                <asp:Label runat="server" ID="LblMensagemErro" Text="Erro!" CssClass="text-dark text-center bg-danger d-block p-2 my-2" Visible="false"></asp:Label>
                                 <asp:LinkButton runat="server"
                                     ID="BtnEfetuarLogin"
                                     CssClass="btn btn-block btn-primary"

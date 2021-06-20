@@ -1,7 +1,7 @@
 ﻿using System;
 namespace Livtec.Entidades
 {
-    public sealed class Produto
+    public sealed class Livro
     {
         public int Id { get; set; }
 
@@ -19,12 +19,12 @@ namespace Livtec.Entidades
 
         public int AnoEdicao { get; set; }
 
-        public string TipoLivro { get; set; }
+        public TipoLivro TipoLivro { get; set; }
 
         public Editora Editora { get; set; }
 
         public byte[] Imagem { get; set; }
 
-        public DateTime DataCriacao { get; set; }
+        public DateTime? DataCriacao { get; set; }
     }
 }

@@ -15,13 +15,22 @@ namespace Livtec.Web.Administrador
     {
 
         /// <summary>
-        /// GVProdutos control.
+        /// UpdtPanelEliminarAtualizarLivro control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GVProdutos;
+        protected global::System.Web.UI.UpdatePanel UpdtPanelEliminarAtualizarLivro;
+
+        /// <summary>
+        /// RptrLivrosTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RptrLivrosTable;
 
         /// <summary>
         /// UpdtPanelInserirLivro control.
@@ -141,13 +150,13 @@ namespace Livtec.Web.Administrador
         protected global::System.Web.UI.WebControls.TextBox TBSinopseAdicionarLivro;
 
         /// <summary>
-        /// FPCapaImagemLivro control.
+        /// FPCapaImagemLivroAsync control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FPCapaImagemLivro;
+        protected global::AjaxControlToolkit.AsyncFileUpload FPCapaImagemLivroAsync;
 
         /// <summary>
         /// BtnAdicionarLivro control.

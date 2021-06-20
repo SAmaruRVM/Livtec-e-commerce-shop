@@ -44,8 +44,9 @@
     <Compile Include="Autor.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="Editora.cs" />
-    <Compile Include="Produto.cs" />
+    <Compile Include="Livro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TipoLivro.cs" />
     <Compile Include="TipoUtilizador.cs" />
     <Compile Include="Utilizador.cs" />
   </ItemGroup>

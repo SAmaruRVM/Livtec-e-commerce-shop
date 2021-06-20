@@ -20,7 +20,7 @@ function mostrarNotificacao(titulo, mensagem, tipoNotificacao)
         messageLineHeight: '',
         backgroundColor: '',
         theme: 'dark', // dark
-        color: tipoNotificacao == 'sucesso' ? 'green' : 'red', // blue, red, green, yellow
+        color: tipoNotificacao === 'sucesso' ? 'green' : 'red', // blue, red, green, yellow
         icon: '',
         iconText: '',
         iconColor: '',

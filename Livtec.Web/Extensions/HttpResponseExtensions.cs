@@ -1,6 +1,7 @@
 ﻿
 using System;
 using System.Web;
+using System.Web.SessionState;
 
 namespace Livtec.Web.Extensions
 {
@@ -13,6 +14,12 @@ namespace Livtec.Web.Extensions
             {
                 Expires = DateTime.Today.AddDays(-1)
             });
+        }
+
+        public static void RedirecionarComSession(this HttpResponse @this, HttpSessionState sessionObject, string nomeSession, object valorSession, string nomePaginaSemExtensao) 
+        {    
+            sessionObject[nomeSession] = valorSession;
+            @this.Redirect($"{nomePaginaSemExtensao}.aspx");
         }
     }
 }

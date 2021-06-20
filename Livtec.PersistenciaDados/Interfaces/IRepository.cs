@@ -10,5 +10,6 @@ namespace Livtec.PersistenciaDados.Interfaces
         TEntidade Inserir(TEntidade entidade);
         TEntidade EliminarPorId(TChave Id);
         TEntidade Atualizar(TEntidade entidade);
+        IEnumerable<TEntidade> SemPaginacao();
     }
 }
