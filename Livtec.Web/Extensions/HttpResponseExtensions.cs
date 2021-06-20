@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Web;
 using System.Web.SessionState;
 
@@ -20,6 +19,14 @@ namespace Livtec.Web.Extensions
         {    
             sessionObject[nomeSession] = valorSession;
             @this.Redirect($"{nomePaginaSemExtensao}.aspx");
+        }
+
+
+        public static void StatusCode(this HttpResponse @this, int statusCode) 
+        {
+            @this.Clear();
+            @this.StatusCode = statusCode;
+            @this.End();
         }
     }
 }

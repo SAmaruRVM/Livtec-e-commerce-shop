@@ -4,11 +4,11 @@
 
 <html>
 <head runat="server">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/sandstone/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/minty/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="Recursos/CSS/styles.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css" integrity="sha512-DIW4FkYTOxjCqRt7oS9BFO+nVOwDL4bzukDyDtMO7crjUZhwpyrWBFroq+IqRe6VnJkTpRAS6nhDvf0w+wHmxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -40,10 +40,14 @@
                     </li>
                 </ul>
                 <div class="nav-item mr-3">
-                    <a href="Checkout.aspx">
-                        <asp:Label runat="server" ID="LblNumeroProdutosCarrinho" Text="0"></asp:Label>
-                        <i class="fas fa-shopping-cart fa-lg"></i>
-                    </a>
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <a href="Checkout.aspx">
+                                <asp:Label runat="server" ID="LblNumeroProdutosCarrinho" Text="0" CssClass="h4"></asp:Label>
+                                <i class="fas fa-shopping-cart fa-lg"></i>
+                            </a>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
                 </div>
                 <div class="nav-item dropdown">
                     <button runat="server" type="button" class="nav-link dropdown-toggle btn btn-primary px-5" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -104,7 +108,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="TBPasswordRegisto" class="col-form-label">Password<i class="fas fa-lock ml-2"></i></label>
-                                    <asp:TextBox runat="server" ID="TBPasswordRegisto" TextMode="Password" class="form-control rounded-0" placeholder="A sua password"/>
+                                    <asp:TextBox runat="server" ID="TBPasswordRegisto" TextMode="Password" class="form-control rounded-0" placeholder="A sua password" />
                                     <asp:RequiredFieldValidator runat="server"
                                         CssClass="text-danger text-center m-0"
                                         ControlToValidate="TBPasswordRegisto"
@@ -157,93 +161,93 @@
                         </div>
                     </div>
                 </div>
-        </div>
+            </div>
 
 
 
-        <div class="modal fade" id="modal-login" tabindex="-1" aria-labelledby="modal-login-label" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title font-weight-bold h3" id="modal-login-label">Efetuar login</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <asp:UpdatePanel runat="server">
-                            <ContentTemplate>
-                                <div class="form-group">
-                                    <label for="TBEmailLogin" class="col-form-label">Email<i class="fas fa-at ml-2"></i></label>
-                                    <asp:TextBox runat="server" ID="TBEmailLogin" TextMode="Email" class="form-control rounded-0" placeholder="O seu email" />
-                                    <asp:RequiredFieldValidator runat="server"
-                                        CssClass="text-danger text-center m-0"
-                                        ControlToValidate="TBEmailLogin"
-                                        ErrorMessage="Email é de preenchimento obrigatório!"
-                                        SetFocusOnError="true"
-                                        ValidationGroup="VGLogin"
-                                        Display="Dynamic" />
+            <div class="modal fade" id="modal-login" tabindex="-1" aria-labelledby="modal-login-label" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title font-weight-bold h3" id="modal-login-label">Efetuar login</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <div class="form-group">
+                                        <label for="TBEmailLogin" class="col-form-label">Email<i class="fas fa-at ml-2"></i></label>
+                                        <asp:TextBox runat="server" ID="TBEmailLogin" TextMode="Email" class="form-control rounded-0" placeholder="O seu email" />
+                                        <asp:RequiredFieldValidator runat="server"
+                                            CssClass="text-danger text-center m-0"
+                                            ControlToValidate="TBEmailLogin"
+                                            ErrorMessage="Email é de preenchimento obrigatório!"
+                                            SetFocusOnError="true"
+                                            ValidationGroup="VGLogin"
+                                            Display="Dynamic" />
 
-                                    <%-- <asp:RegularExpressionValidator runat="server"
+                                        <%-- <asp:RegularExpressionValidator runat="server"
                                 CssClass="text-danger text-center m-0" 
                                 ControlToValidate="TBEmail" 
                                 ErrorMessage="Email foi inserido um formato incorreto!"
                                 SetFocusOnError="true" 
                                 ValidationExpression="/^\S+@\S+\.\S+$/"
                                 ValidationGroup="VGRegisto"/>--%>
-                                </div>
-                                <div class="form-group">
-                                    <label for="TBPasswordLogin" class="col-form-label">Password<i class="fas fa-lock ml-2"></i></label>
-                                    <asp:TextBox runat="server" ID="TBPasswordLogin" TextMode="Password" class="form-control rounded-0" placeholder="A sua password" />
-                                    <asp:RequiredFieldValidator runat="server"
-                                        CssClass="text-danger text-center m-0"
-                                        ControlToValidate="TBPasswordLogin"
-                                        ErrorMessage="Password é de preenchimento obrigatório!"
-                                        SetFocusOnError="true"
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="TBPasswordLogin" class="col-form-label">Password<i class="fas fa-lock ml-2"></i></label>
+                                        <asp:TextBox runat="server" ID="TBPasswordLogin" TextMode="Password" class="form-control rounded-0" placeholder="A sua password" />
+                                        <asp:RequiredFieldValidator runat="server"
+                                            CssClass="text-danger text-center m-0"
+                                            ControlToValidate="TBPasswordLogin"
+                                            ErrorMessage="Password é de preenchimento obrigatório!"
+                                            SetFocusOnError="true"
+                                            ValidationGroup="VGLogin"
+                                            Display="Dynamic" />
+                                    </div>
+                                    <asp:LinkButton runat="server"
+                                        ID="BtnEfetuarLogin"
+                                        CssClass="btn btn-block btn-primary"
                                         ValidationGroup="VGLogin"
-                                        Display="Dynamic" />
-                                </div>
-                                <asp:LinkButton runat="server"
-                                    ID="BtnEfetuarLogin"
-                                    CssClass="btn btn-block btn-primary"
-                                    ValidationGroup="VGLogin"
-                                    OnClick="BtnEfetuarLogin_Click">
+                                        OnClick="BtnEfetuarLogin_Click">
                                     <i class="fas fa-sign-in-alt"></i>
                                     Login
-                                </asp:LinkButton>
-                                </div>
-                            </ContentTemplate>
-                        </asp:UpdatePanel>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-registo" data-dismiss="modal">Ainda não tenho conta</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                                    </asp:LinkButton>
+                                    </div>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-registo" data-dismiss="modal">Ainda não tenho conta</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Fim Modals -->
+                <!-- Fim Modals -->
 
-            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            </asp:ContentPlaceHolder>
-            <footer class="footer mt-auto bg-dark p-2">
-                <div class="container">
-                    <span class="text-muted">Place sticky footer content here.</span>
-                </div>
-            </footer>
-
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+                <footer class="footer mt-auto bg-dark p-2 mt-2">
+                    <div class="container">
+                        <span class="text-muted">Place sticky footer content here.</span>
+                    </div>
+                </footer>
 
 
 
 
-            <script
-                src="https://code.jquery.com/jquery-3.6.0.min.js"
-                integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
-                crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha512-M5KW3ztuIICmVIhjSqXe01oV2bpe248gOxqmlcYrEzAvws7Pw3z6BK0iGbrwvdrUQUhi3eXgtxp5I8PDo9YfjQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-          <script src="Recursos/Javascript/main.js"></script>
-            </form>
+
+                <script
+                    src="https://code.jquery.com/jquery-3.6.0.min.js"
+                    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+                    crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha512-M5KW3ztuIICmVIhjSqXe01oV2bpe248gOxqmlcYrEzAvws7Pw3z6BK0iGbrwvdrUQUhi3eXgtxp5I8PDo9YfjQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+                <script src="Recursos/Javascript/main.js"></script>
+    </form>
 </body>
 </html>
 

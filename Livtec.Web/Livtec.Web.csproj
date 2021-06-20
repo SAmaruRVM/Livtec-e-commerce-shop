@@ -72,6 +72,7 @@
   <ItemGroup>
     <Content Include="Administrador\Autores.aspx" />
     <Content Include="Administrador\Editoras.aspx" />
+    <Content Include="Administrador\Encomendas.aspx" />
     <Content Include="Administrador\Index.aspx" />
     <Content Include="Administrador\Livros.aspx" />
     <Content Include="Administrador\Recursos\CSS\styles.css" />
@@ -114,6 +115,13 @@
     </Compile>
     <Compile Include="Administrador\Editoras.aspx.designer.cs">
       <DependentUpon>Editoras.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\Encomendas.aspx.cs">
+      <DependentUpon>Encomendas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\Encomendas.aspx.designer.cs">
+      <DependentUpon>Encomendas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administrador\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>

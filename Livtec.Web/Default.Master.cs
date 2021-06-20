@@ -16,8 +16,6 @@ namespace Livtec.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!(IsPostBack))
-            {
                 var utilizadorLogado = new UserAutenticacao().VerificarSeUserEstaLogado(Guid.TryParse(Request.Cookies.Get("Authentication")?.Value, out var authGuid) ? authGuid : Guid.Empty) ?? Session["UtilizadorLogado"] as Utilizador;
                 if (utilizadorLogado != null)
                 {
@@ -38,7 +36,6 @@ namespace Livtec.Web
                     DropDownDivider.Visible = false;
                     navbarDropdown.InnerText = $"Olá, {utilizadorLogado.Email}!";
                 }
-            }
         }
 
         protected void BtnEfetuarLogin_Click(object sender, EventArgs e)
@@ -108,6 +105,7 @@ namespace Livtec.Web
         protected void BtnLogout_Click(object sender, EventArgs e)
         {
             Response.RemoverCookie("Authentication");
+            Session.Remove("UtilizadorLogado");
             Response.Redirect(Request.RawUrl);
         }
     }

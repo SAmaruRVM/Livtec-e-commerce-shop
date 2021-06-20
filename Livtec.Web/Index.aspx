@@ -4,7 +4,7 @@
     <title>Livtec</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <asp:ScriptManager runat="server"></asp:ScriptManager>
+
 
     <div class="container-fluid py-5 mt-5 banner-livros">
         <div class="row text-center mb-5">
@@ -19,23 +19,17 @@
                     <asp:Repeater runat="server" ID="RptrUltimosLivros">
                         <ItemTemplate>
                             <li class="list-group-item">
-                                <div class="media align-items-lg-center flex-column flex-lg-row p-3">
+                                <div class="media align-items-lg-center flex-column flex-lg-row py-3">
                                     <div class="media-body order-2 order-lg-1">
-                                        <h5 class="mt-0 font-weight-bold mb-2">Awesome product</h5>
-                                        <p class="font-italic text-muted mb-0 small">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit fuga autem maiores necessitatibus.</p>
-                                        <div class="d-flex align-items-center justify-content-between mt-1">
-                                            <h6 class="font-weight-bold my-2">$120.00</h6>
-                                            <ul class="list-inline small">
-                                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                                <li class="list-inline-item m-0"><i class="fa fa-star text-success"></i></li>
-                                                <li class="list-inline-item m-0"><i class="fa fa-star-o text-gray"></i></li>
-                                            </ul>
-                                        </div>
+                                        <h5 class="mt-0 font-weight-bold mb-2"><%# Eval("Titulo") %></h5>
+                                        <p class="font-italic text-muted mb-0 small"><%# Eval("Sinopse") %></p>
                                     </div>
-                                    <img src="https://res.cloudinary.com/mhmd/image/upload/v1556485076/shoes-1_gthops.jpg" alt="Generic placeholder image" width="200" class="ml-lg-5 order-1 order-lg-2">
+                                     <img class="ml-lg-5 order-1 order-lg-2" width="100" alt="Capa livro (Imagem)" <%# (Eval("Imagem") is null) ? "src='Recursos/Imagens/Imagem-Livro-Placeholder.png'" : $"src='data:image/png;base64,{Convert.ToBase64String((byte[])Eval("Imagem"))}'"%> />
                                 </div>
+                                 <a class="btn btn-sm btn-primary btn-block p-2" href="Detalhes-Livro.aspx?titulo=<%# string.Join("-", Eval("Titulo").ToString().Split(' ')) %>&isbn=<%# Eval("ISBN") %>" target="_blank">
+                                        <i class="fas fa-info-circle fa-lg"></i>
+                                        Ver mais detalhes
+                                    </a>
                             </li>
                         </ItemTemplate>
                     </asp:Repeater>
@@ -46,8 +40,6 @@
 
     <asp:UpdatePanel runat="server" ID="UpdtPanelAdicionarLivroAoCarrinho">
         <ContentTemplate>
-
-
             <div class="album py-5 bg-light">
                 <div class="container">
                     <div class="row">
@@ -58,16 +50,17 @@
                                         <small class="float-right text-info h4 font-weight-bold">
                                             <%# Eval("Preco") + "€" %>
                                         </small>
-                                        <img class="bd-placeholder-img card-img-top" <%# (Eval("Imagem") is null) ? "src='https://turistaprofissional.com/wp-content/uploads/2020/03/booking-confiavel-1.jpg'" : $"src='data:image/png;base64,{Convert.ToBase64String((byte[])Eval("Imagem"))}'"%> />
-                                        <h3 class="text-center">
+                                        <img class="bd-placeholder-img card-img-top"  alt="Capa livro (Imagem)" <%# (Eval("Imagem") is null) ? "src='Recursos/Imagens/Imagem-Livro-Placeholder.png'" : $"src='data:image/png;base64,{Convert.ToBase64String((byte[])Eval("Imagem"))}'"%> />
+                                        <h3 class="text-center text-success">
                                             <%# Eval("Titulo") %>
                                         </h3>
+                                        <small class="text-center h6"><%# Eval("Editora.Nome") %></small>
                                         <hr />
                                         <p class="card-text text-center text-primary"><%# Eval("Sinopse") %></p>
                                         <div class="d-flex justify-content-center align-items-center">
                                             <div class="btn-group flex-column w-75">
                                                 <asp:LinkButton runat="server" ID="LKBAdicionarLivroAoCarrinho"
-                                                    class="btn btn-sm btn-secondary btn-block p-2"
+                                                    class="btn btn-sm btn-info btn-block p-2"
                                                     OnCommand="LKBAdicionarLivroAoCarrinho_Command"
                                                     CommandArgument='<%# Eval("Id") %>'>
                                                 <i class="fas fa-cart-plus fa-lg"></i>

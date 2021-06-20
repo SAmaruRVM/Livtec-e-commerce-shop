@@ -14,6 +14,8 @@
         UspInserirLivro,
         UspLivrosPaginacao,
         UspTodosLivros,
-        UspAtualizarEditora
+        UspAtualizarEditora,
+        UspAdicionaLivroAoCarrinho,
+        UspProcurarLivroPorISBN
     }
 }

@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using Livtec.Entidades;
+using System;
 
 namespace Livtec.Web
 {
@@ -11,7 +7,8 @@ namespace Livtec.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Utilizador utilizadorLogado = (Utilizador)Session["UtilizadorLogado"];
+            TBEmailAlteracaoDados.Text = utilizadorLogado.Email;
         }
     }
 }
