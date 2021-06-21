@@ -8,7 +8,7 @@ using System.Web.UI.WebControls;
 
 namespace Livtec.Web
 {
-    public partial class Index : System.Web.UI.Page
+    public partial class Index : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -28,9 +28,19 @@ namespace Livtec.Web
 
             }
 
-            CarregarRepeaterProdutos();
+
             CarregarRepeaterUltimosProdutos();
 
+            //if (int.TryParse(Request.QueryString["pagina"], out int pagina) && pagina > 0) 
+            //{
+            //    CarregarRepeaterProdutos(pagina);
+            //}
+            //else 
+            //{
+            //    CarregarRepeaterProdutos(pagina);
+            //}
+            // RptrPaginacaoBotoes.DataSource = new LivroRepository().Paginacao(numeroPagina: pagina);
+            //RptrPaginacaoBotoes.DataBind();
         }
 
 
@@ -74,6 +84,12 @@ namespace Livtec.Web
                                      $"'{sqlException.Message}', 'erro')";
                 ScriptManager.RegisterStartupScript(Page, GetType(), "MostrarNotificacaoLivroAdicionadoAoCarrinhoErro", mostrarNotificacao, true);
             }
+        }
+
+        protected void BtnPesquisarTitulo_Click(object sender, EventArgs e)
+        {
+            RptrLivros.DataSource = new LivroRepository().EncontrarPorTituloOuISBN(TBFiltarLivroPorIdOuISBN.Text);
+            RptrLivros.DataBind();
         }
     }
 }

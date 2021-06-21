@@ -20,7 +20,6 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th style="text-align: center; vertical-align: middle;">Id</th>
                                         <th style="text-align: center; vertical-align: middle;">Título</th>
                                         <th style="text-align: center; vertical-align: middle;">Preço</th>
                                         <th style="text-align: center; vertical-align: middle;">NumeroPaginas</th>
@@ -41,9 +40,6 @@
                                     <ItemTemplate>
                                         <tr>
                                             <td style="text-align: center; vertical-align: middle;">
-                                                <%# Eval("Id") %>
-                                            </td>
-                                            <td style="text-align: center; vertical-align: middle;">
                                                 <%# Eval("Titulo") %>
                                             </td>
                                             <td style="text-align: center; vertical-align: middle;">
@@ -53,7 +49,7 @@
                                                 <%# Eval("NumeroPaginas") %>
                                             </td>
                                             <td style="text-align: center; vertical-align: middle;">
-                                                <%# Eval("Sinopse") %>
+                                                <%# string.IsNullOrWhiteSpace(Eval("Sinopse").ToString()) ? "A sinopse deste livro não se encontra disponível. Pedimos desculpa pelo incómodo" : Eval("Sinopse") %>
                                             </td>
                                             <td style="text-align: center; vertical-align: middle;">
                                                 <%# Eval("ISBN") %>
@@ -72,9 +68,8 @@
                                             </td>
                                             <td style="text-align: center; vertical-align: middle;">
                                                 <%# Eval("Editora.Nome") %>
-                                                <button type="button" class="btn btn-primary">
-                                                    Atualizar ou remover esta editora
-                                                </button>
+                                                <asp:Button runat="server" ID="BtnAtualizarRemoverEditora" class="btn btn-primary btn-danger"
+                                                    Text="Atualizar/Remover" OnCommand="BtnAtualizarRemoverEditora_Command" CommandArgument='<%# $"{Eval("Editora.Id")};{Eval("Editora.Nome")}" %>' />
                                             </td>
                                             <td style="text-align: center; vertical-align: middle;">
                                                 <%# Eval("TipoLivro") %>
@@ -252,9 +247,8 @@
 
 
                             <div class="custom-file mt-2 mb-4 p-2">
-                                <label for="FPCapaImagemLivro" class="custom-file-label">Capa do livro (Imagem)</label>
-                                <ajaxToolkit:AsyncFileUpload runat="server" ID="FPCapaImagemLivroAsync" accept="image/*" CssClass="custom-file-input" UploaderStyle="Modern" />
-                                <%-- <asp:FileUpload runat="server" ID="FPCapaImagemLivro" accept="image/*" CssClass="custom-file-input" />--%>
+                                <label for="FPCapaImagemLivroAsync" class="custom-file-label">Capa do livro (Imagem)</label>
+                                <ajaxToolkit:AsyncFileUpload runat="server" ID="FPCapaImagemLivroAsync" accept="image/*" CssClass="custom-file-input" OnUploadedComplete="OnCompleteUploadImagemLivro" />
                             </div>
 
 

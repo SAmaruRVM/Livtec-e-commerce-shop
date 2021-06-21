@@ -16,6 +16,15 @@
         UspTodosLivros,
         UspAtualizarEditora,
         UspAdicionaLivroAoCarrinho,
-        UspProcurarLivroPorISBN
+        UspProcurarLivroPorISBN,
+        UspLivrosCarrinho,
+        UspNumeroTotalLivrosCarrinhoValorTotal,
+        UspTodosAutores,
+        UspInserirAutor,
+        UspEliminarAutorPorId,
+        UspProcurarLivroPorTituloOuISBN,
+        UspTodosUtilizadores,
+        UspEliminarUtilizadorPorId,
+        UspCheckOut
     }
 }

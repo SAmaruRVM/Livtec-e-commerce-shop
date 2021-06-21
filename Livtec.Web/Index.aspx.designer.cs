@@ -33,6 +33,24 @@ namespace Livtec.Web
         protected global::System.Web.UI.UpdatePanel UpdtPanelAdicionarLivroAoCarrinho;
 
         /// <summary>
+        /// TBFiltarLivroPorIdOuISBN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBFiltarLivroPorIdOuISBN;
+
+        /// <summary>
+        /// BtnPesquisarTitulo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnPesquisarTitulo;
+
+        /// <summary>
         /// RptrLivros control.
         /// </summary>
         /// <remarks>
@@ -40,5 +58,14 @@ namespace Livtec.Web
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater RptrLivros;
+
+        /// <summary>
+        /// RptrPaginacaoBotoes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RptrPaginacaoBotoes;
     }
 }

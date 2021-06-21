@@ -63,9 +63,12 @@
     <Compile Include="CredenciaisErradasException.cs" />
     <Compile Include="Extensions\SqlCommandExtensions.cs" />
     <Compile Include="Helpers\Helper.cs" />
+    <Compile Include="Implementacoes\AutorRepository.cs" />
     <Compile Include="Implementacoes\CarrinhoRepository.cs" />
     <Compile Include="Implementacoes\EditoraRepository.cs" />
+    <Compile Include="Implementacoes\EncomendasRepository.cs" />
     <Compile Include="Implementacoes\LivroRepository.cs" />
+    <Compile Include="Implementacoes\OpiniaoRepository.cs" />
     <Compile Include="Implementacoes\UtilizadorRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

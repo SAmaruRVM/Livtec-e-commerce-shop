@@ -7,6 +7,7 @@ namespace Livtec.Web
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
             Utilizador utilizadorLogado = (Utilizador)Session["UtilizadorLogado"];
             TBEmailAlteracaoDados.Text = utilizadorLogado.Email;
         }

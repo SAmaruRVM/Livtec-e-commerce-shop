@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Administrador/Admin.Master" AutoEventWireup="true" CodeBehind="Editoras.aspx.cs" Inherits="Livtec.Web.Administrador.Editoras" EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-  <title>Livtec Editoras - Administração</title>
+    <title>Livtec Editoras - Administração</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager runat="server"></asp:ScriptManager>
@@ -19,7 +19,6 @@
                             <table class="table table-hover">
                                 <thead>
                                     <tr>
-                                        <th style="text-align: center; vertical-align: middle;">Id</th>
                                         <th style="text-align: center; vertical-align: middle;">Nome</th>
                                         <th style="text-align: center; vertical-align: middle;">Alterações</th>
                                     </tr>
@@ -31,15 +30,12 @@
                                     <ItemTemplate>
                                         <tr>
                                             <td style="text-align: center; vertical-align: middle;">
-                                                <%# Eval("Id") %>
-                                            </td>
-                                            <td style="text-align: center; vertical-align: middle;">
                                                 <%# Eval("Nome") %>
                                             </td>
                                             <td style="text-align: center; vertical-align: middle;">
                                                 <asp:Button runat="server" ID="BtnAtualizarEditora" Text="Atualizar" CssClass="btn btn-success"
-                                                     OnCommand="BtnAtualizarEditora_Command"
-                                                     CommandArgument='<%# Eval("Id") + ";" + Eval("Nome") %>'/>
+                                                    OnCommand="BtnAtualizarEditora_Command"
+                                                    CommandArgument='<%# Eval("Id") + ";" + Eval("Nome") %>' />
                                                 <asp:Button runat="server" ID="BtnEliminarEditora" Text="Eliminar" CssClass="btn btn-danger"
                                                     OnCommand="BtnEliminarEditora_Command" CommandArgument='<%# Eval("Id") %>' />
                                             </td>
@@ -64,7 +60,7 @@
 
 
 
-      <div class="modal fade" id="modal-atualizar-editora" tabindex="-1" aria-labelledby="modal-atualizar-editora-label" aria-hidden="true">
+    <div class="modal fade" id="modal-atualizar-editora" tabindex="-1" aria-labelledby="modal-atualizar-editora-label" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -93,13 +89,16 @@
                                 CssClass="btn btn-block btn-primary"
                                 ValidationGroup="VGAtualizarEditora"
                                 OnClick="BtnAtualizarEditora_Click">
-                          <asp:UpdateProgress runat="server" AssociatedUpdatePanelID="UpdtPanelAtualizarEditora">
-                                        <ProgressTemplate>
-                                           <i class="fas fa-circle-notch fa-spin"></i>
-                                        </ProgressTemplate>
-                                    </asp:UpdateProgress>
                         <i class="fas fa-book"></i>
                             Atualizar editora
+                            </asp:LinkButton>
+
+                            <asp:LinkButton runat="server"
+                                ID="BtnEliminarEditora"
+                                CssClass="btn btn-block btn-danger"
+                                OnClick="BtnEliminarEditora_Click">
+                        <i class="fas fa-trash"></i>
+                            Eliminar editora
                             </asp:LinkButton>
                         </ContentTemplate>
                     </asp:UpdatePanel>

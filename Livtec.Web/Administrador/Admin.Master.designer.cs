@@ -33,13 +33,13 @@ namespace Livtec.Web.Administrador
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// lbl_adminNome control.
+        /// LblNomeAdmin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_adminNome;
+        protected global::System.Web.UI.WebControls.Label LblNomeAdmin;
 
         /// <summary>
         /// link_logout control.

@@ -17,9 +17,25 @@ namespace Livtec.Web.Administrador
                 Session.Remove("RedirectEditorasInsercao");
             }
 
+            if (Session["AtualizarRemoverEditoraLivro"] != null)
+            {
+                var valoresEditora = Session["AtualizarRemoverEditoraLivro"].ToString().Split(';');
+                HiddenFieldIdEditora.Value = valoresEditora[0];
+                TBNomeAtualizarEditora.Text = valoresEditora[1];
+                Session.Remove("AtualizarRemoverEditoraLivro");
+                ScriptManager.RegisterStartupScript(Page, GetType(), "AbrirModalEditoraAtualizar", "$('#modal-atualizar-editora').modal('show')", true);
+            }
+         
+
+
 
             RptrEditorasTable.DataSource = new EditoraRepository().SemPaginacao();
             RptrEditorasTable.DataBind();
+        }
+        protected void BtnEliminarEditora_Click(object sender, EventArgs e)
+        {
+            BtnEliminarEditora_Command(sender, new CommandEventArgs(string.Empty, HiddenFieldIdEditora.Value));
+            ScriptManager.RegisterStartupScript(Page, GetType(), "FecharModalEditora", "$('#modal-atualizar-editora').modal('hide')", true);
         }
 
         protected void BtnAdicionarEditora_Click(object sender, EventArgs e)

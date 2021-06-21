@@ -6,11 +6,13 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using Livtec.Web.Extensions;
 using Livtec.Logica.Extensions;
+using AjaxControlToolkit;
 
 namespace Livtec.Web.Administrador
 {
     public partial class Produtos : System.Web.UI.Page
     {
+        private byte[] _dadosBinariosImagem = null;
         protected void Page_Load(object sender, EventArgs e)
         {
             RptrLivrosTable.DataSource = new LivroRepository().SemPaginacao();
@@ -18,20 +20,30 @@ namespace Livtec.Web.Administrador
         }
 
 
-        protected void BtnEliminarLivro_Command(object sender, CommandEventArgs e) 
+
+        protected void BtnAtualizarRemoverEditora_Command(object sender, CommandEventArgs e) => Response.RedirecionarComSession(Session, "AtualizarRemoverEditoraLivro", e.CommandArgument, nameof(Editoras));
+
+
+        protected void BtnEliminarLivro_Command(object sender, CommandEventArgs e)
         {
 
         }
 
+
+        protected void OnCompleteUploadImagemLivro(object sender, AsyncFileUploadEventArgs e)
+        {
+            if (FPCapaImagemLivroAsync.PostedFile != null)
+            {
+                _dadosBinariosImagem = FPCapaImagemLivroAsync.PostedFile.InputStream.ToByteArray();
+            }
+        }
+
+
         protected void BtnAdicionarLivro_Click(object sender, EventArgs e)
         {
-            try 
+            try
             {
-                byte[] dadosBinariosImagem = null;
-                if (FPCapaImagemLivroAsync.PostedFile != null)
-                {
-                    dadosBinariosImagem = FPCapaImagemLivroAsync.PostedFile.InputStream.ToByteArray();
-                }
+
 
                 new LivroRepository().Inserir(new Livro
                 {
@@ -44,11 +56,11 @@ namespace Livtec.Web.Administrador
                     Sinopse = TBSinopseAdicionarLivro.Text,
                     Preco = decimal.Parse(TBPrecoAdicionarLivro.Text),
                     TipoLivro = (TipoLivro)int.Parse(DDLTipoLivroAdicionarLivro.SelectedValue),
-                    Imagem = dadosBinariosImagem // dadosBinariosImagem
+                    Imagem = _dadosBinariosImagem // dadosBinariosImagem
                 });
 
 
-            
+
 
                 // Javascript
                 var mostrarNotificacao = "mostrarNotificacao('O livro foi inserido com sucesso', " +
@@ -56,10 +68,10 @@ namespace Livtec.Web.Administrador
                 ScriptManager.RegisterStartupScript(Page, GetType(), "FecharModalLivro", "$('#modal-novo-livro').modal('hide')", true);
                 ScriptManager.RegisterStartupScript(Page, GetType(), "MostrarNotificacaoInsercaoLivroSucesso", mostrarNotificacao, true);
             }
-            catch(SqlException sqlException) 
+            catch (SqlException sqlException)
             {
                 // Javascript
-                var mostrarNotificacao = "mostrarNotificacao('Erro ao tentar inserir uma novo livro', " +
+                var mostrarNotificacao = "mostrarNotificacao('Erro ao tentar inserir um novo livro', " +
                                   $"'{sqlException.Message}', 'erro')";
                 ScriptManager.RegisterStartupScript(Page, GetType(), "MostrarNotificacaoInsercaoLivroErro", mostrarNotificacao, true);
             }

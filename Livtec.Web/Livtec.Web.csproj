@@ -79,6 +79,7 @@
     <Content Include="Administrador\Recursos\CSS\yearpicker.css" />
     <Content Include="Administrador\Recursos\Javascript\main.js" />
     <Content Include="Administrador\Recursos\Javascript\yearpicker.js" />
+    <Content Include="Administrador\Utilizadores.aspx" />
     <Content Include="Ativacao-Conta.aspx" />
     <Content Include="Checkout.aspx" />
     <Content Include="Detalhes-Livro.aspx" />
@@ -136,6 +137,13 @@
     </Compile>
     <Compile Include="Administrador\Livros.aspx.designer.cs">
       <DependentUpon>Livros.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administrador\Utilizadores.aspx.cs">
+      <DependentUpon>Utilizadores.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administrador\Utilizadores.aspx.designer.cs">
+      <DependentUpon>Utilizadores.aspx</DependentUpon>
     </Compile>
     <Compile Include="Ativacao-Conta.aspx.cs">
       <DependentUpon>Ativacao-Conta.aspx</DependentUpon>

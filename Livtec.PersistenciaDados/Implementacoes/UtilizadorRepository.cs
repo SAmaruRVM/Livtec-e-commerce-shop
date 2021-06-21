@@ -14,9 +14,27 @@ namespace Livtec.PersistenciaDados.Implementacoes
             throw new System.NotImplementedException();
         }
 
-        public Utilizador EliminarPorId(int Id)
+        public Utilizador EliminarPorId(int id)
         {
-            throw new System.NotImplementedException();
+            using (SqlDataReader sqlDataReader = new SqlCommand().ExecutarSpComRetorno(StoredProcedure.UspEliminarUtilizadorPorId, new Dictionary<string, object>
+            {
+                ["@id"] = id
+            }))
+            {
+                if (sqlDataReader.Read())
+                {
+                    return new Utilizador
+                    {
+                        Id = int.Parse(sqlDataReader["Id"].ToString()),
+                        DataCriacao = DateTime.Parse(sqlDataReader["DataCriacao"].ToString()),
+                        Email = sqlDataReader["Email"].ToString(),
+                        EstaAtivo = bool.Parse(sqlDataReader["EstaAtivo"].ToString()),
+                        Password = sqlDataReader["Password"].ToString(),
+                        TipoUtilizador = (TipoUtilizador)Enum.Parse(typeof(TipoUtilizador), sqlDataReader["TipoUtilizador"].ToString())
+                    };
+                }
+            }
+            return null;
         }
 
         public Utilizador EncontrarPorId(int id)
@@ -58,7 +76,21 @@ namespace Livtec.PersistenciaDados.Implementacoes
 
         public IEnumerable<Utilizador> SemPaginacao()
         {
-            throw new NotImplementedException();
+            using (SqlDataReader sqlDataReader = new SqlCommand().ExecutarSpComRetorno(StoredProcedure.UspTodosUtilizadores))
+            {
+                while (sqlDataReader.Read())
+                {
+                    yield return new Utilizador
+                    {
+                        Id = int.Parse(sqlDataReader["Id"].ToString()),
+                        Email = sqlDataReader["Email"].ToString(),
+                        DataCriacao = DateTime.Parse(sqlDataReader["DataCriacao"].ToString()),
+                        DataUltimoLogin = DateTime.TryParse(sqlDataReader["DataUltimoLogin"].ToString(), out var dataUltimoLogin) ? dataUltimoLogin : DateTime.MinValue,
+                        EstaAtivo = bool.Parse(sqlDataReader["EstaAtivo"].ToString()),
+                        TipoUtilizador = (TipoUtilizador)Enum.Parse(typeof(TipoUtilizador), sqlDataReader["TipoUtilizador"].ToString())
+                    };
+                }
+            }
         }
     }
 }

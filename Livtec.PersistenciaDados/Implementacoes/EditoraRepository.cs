@@ -1,5 +1,4 @@
-﻿
-using Livtec.Entidades;
+﻿using Livtec.Entidades;
 using Livtec.PersistenciaDados.Extensions;
 using Livtec.PersistenciaDados.Interfaces;
 using System.Collections.Generic;

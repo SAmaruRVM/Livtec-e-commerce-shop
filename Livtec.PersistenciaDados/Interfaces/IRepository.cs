@@ -2,7 +2,7 @@
 
 namespace Livtec.PersistenciaDados.Interfaces
 {
-    internal interface IRepository<TChave, TEntidade>
+    internal interface IRepository<TChave, TEntidade> where TEntidade : class
     {
         TEntidade EncontrarPorId(TChave Id);
         IEnumerable<TEntidade> Paginacao(int numeroPagina, int numeroItems);

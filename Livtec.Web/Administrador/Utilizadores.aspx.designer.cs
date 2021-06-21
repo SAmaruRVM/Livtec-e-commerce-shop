@@ -7,20 +7,29 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Livtec.Web
+namespace Livtec.Web.Administrador
 {
 
 
-    public partial class Minhas_Encomendas
+    public partial class Utilizadores
     {
 
         /// <summary>
-        /// RptrEncomendas control.
+        /// UpdtPanelUtilizadores control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RptrEncomendas;
+        protected global::System.Web.UI.UpdatePanel UpdtPanelUtilizadores;
+
+        /// <summary>
+        /// RptrUtilizadoresTable control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RptrUtilizadoresTable;
     }
 }

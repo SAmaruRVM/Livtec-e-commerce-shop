@@ -1,5 +1,6 @@
 ﻿using Livtec.Logica;
 using Livtec.Logica.Extensions;
+using Livtec.Web.Extensions;
 using System;
 using System.Data.SqlClient;
 
@@ -16,16 +17,12 @@ namespace Livtec.Web
                 {
                     var userAutenticacao = new UserAutenticacao();
                     userAutenticacao.AtivarContaUtilizador(email);
-                    Session["ContaAtivada"] = "A sua conta foi ativada com sucesso!";
+                    Response.RedirecionarComSession(Session, "ContaAtivada", "A sua conta foi ativada com sucesso!", nameof(Index));
                 }
             }
             catch(SqlException sqlException) 
             {
-                Session["ContaAtivada"] = sqlException;
-            }
-            finally 
-            {
-                Response.Redirect($"{nameof(Index)}.aspx");
+                Response.RedirecionarComSession(Session, "ContaAtivada", sqlException, nameof(Index));
             }
         }
     }

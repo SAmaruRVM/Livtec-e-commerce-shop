@@ -45,13 +45,47 @@ namespace Livtec.PersistenciaDados.Implementacoes
                         AnoEdicao = int.Parse(sqlDataReader["AnoEdicao"].ToString()),
                         Imagem = sqlDataReader.IsDBNull(8) ? null : (byte[])sqlDataReader["ImagemCapa"],
                         DataCriacao = DateTime.Parse(sqlDataReader["DataCriacao"].ToString()),
-                        Editora = new Editora { Nome = sqlDataReader["NomeEditora"].ToString() },
+                        Editora = new Editora { Id = int.Parse(sqlDataReader["IdEditora"].ToString()), Nome = sqlDataReader["NomeEditora"].ToString() },
                         TipoLivro = (TipoLivro)Enum.Parse(typeof(TipoLivro), sqlDataReader["TipoLivro"].ToString())
                     };
                 }
                 return null;
             }
         }
+
+
+
+        public IEnumerable<Livro> EncontrarPorTituloOuISBN(string valorPesquisa)
+        {
+            using (SqlDataReader sqlDataReader = new SqlCommand().ExecutarSpComRetorno(StoredProcedure.UspProcurarLivroPorTituloOuISBN, new Dictionary<string, object>
+            {
+                ["@valorPesquisa"] = valorPesquisa
+            }))
+            {
+                if (sqlDataReader.Read())
+                {
+                    yield return new Livro
+                    {
+                        Id = int.Parse(sqlDataReader["Id"].ToString()),
+                        Titulo = sqlDataReader["Titulo"].ToString(),
+                        Preco = decimal.Parse(sqlDataReader["Preco"].ToString()),
+                        NumeroPaginas = int.Parse(sqlDataReader["NumeroPaginas"].ToString()),
+                        Sinopse = sqlDataReader["Sinopse"].ToString(),
+                        ISBN = sqlDataReader["ISBN"].ToString(),
+                        Idioma = sqlDataReader["Idioma"].ToString(),
+                        AnoEdicao = int.Parse(sqlDataReader["AnoEdicao"].ToString()),
+                        Imagem = sqlDataReader.IsDBNull(8) ? null : (byte[])sqlDataReader["ImagemCapa"],
+                        DataCriacao = DateTime.Parse(sqlDataReader["DataCriacao"].ToString()),
+                        Editora = new Editora { Id = int.Parse(sqlDataReader["IdEditora"].ToString()), Nome = sqlDataReader["NomeEditora"].ToString() },
+                        TipoLivro = (TipoLivro)Enum.Parse(typeof(TipoLivro), sqlDataReader["TipoLivro"].ToString())
+                    };
+                }
+            }
+        }
+
+
+
+
 
         public Livro Inserir(Livro entidade)
         {
@@ -95,7 +129,7 @@ namespace Livtec.PersistenciaDados.Implementacoes
                         AnoEdicao = int.Parse(sqlDataReader["AnoEdicao"].ToString()),
                         Imagem = sqlDataReader.IsDBNull(8) ? null : (byte[])sqlDataReader["ImagemCapa"],
                         DataCriacao = DateTime.Parse(sqlDataReader["DataCriacao"].ToString()),
-                        Editora = new Editora { Nome = sqlDataReader["NomeEditora"].ToString() },
+                        Editora = new Editora { Id = int.Parse(sqlDataReader["IdEditora"].ToString()), Nome = sqlDataReader["NomeEditora"].ToString() },
                         TipoLivro = (TipoLivro)Enum.Parse(typeof(TipoLivro), sqlDataReader["TipoLivro"].ToString())
                     };
                 }
@@ -120,7 +154,7 @@ namespace Livtec.PersistenciaDados.Implementacoes
                         AnoEdicao = int.Parse(sqlDataReader["AnoEdicao"].ToString()),
                         Imagem = sqlDataReader.IsDBNull(8) ? null : (byte[])sqlDataReader["ImagemCapa"],
                         DataCriacao = DateTime.Parse(sqlDataReader["DataCriacao"].ToString()),
-                        Editora = new Editora { Nome = sqlDataReader["NomeEditora"].ToString() },
+                        Editora = new Editora { Id = int.Parse(sqlDataReader["IdEditora"].ToString()), Nome = sqlDataReader["NomeEditora"].ToString() },
                         TipoLivro = (TipoLivro)Enum.Parse(typeof(TipoLivro), sqlDataReader["TipoLivro"].ToString())
                     };
                 }

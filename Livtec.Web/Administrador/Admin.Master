@@ -4,25 +4,25 @@
 
 <html>
 <head runat="server">
-        <link rel="stylesheet" href="Recursos/CSS/styles.css" />
-
+    <link rel="stylesheet" href="Recursos/CSS/styles.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css" /> 
     <link rel="stylesheet" href="Recursos/CSS/yearpicker.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/minty/bootstrap.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css" integrity="sha512-DIW4FkYTOxjCqRt7oS9BFO+nVOwDL4bzukDyDtMO7crjUZhwpyrWBFroq+IqRe6VnJkTpRAS6nhDvf0w+wHmxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/css/iziToast.css" integrity="sha512-DIW4FkYTOxjCqRt7oS9BFO+nVOwDL4bzukDyDtMO7crjUZhwpyrWBFroq+IqRe6VnJkTpRAS6nhDvf0w+wHmxg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
-    <form id="form1" runat="server">
+    <form id="form1" runat="server" enctype="multipart/form-data">
 
 
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
 
 
-            <a class="navbar-brand" href="backofficeEncomendas.aspx">Backoffice</a>
+            <a class="navbar-brand" href="Index.aspx">Administração</a>
             <button type="button" class="btn btn-link btn order-1 order-lg-0" id="sidebarToggle"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
 
@@ -41,20 +41,20 @@
                                 <div class="small ml-1 mb-2">
                                     Bem-Vindo
                                     <br />
-                                    <asp:Label ID="lbl_adminNome" runat="server" class="text-white h6 font-italic" Text=""></asp:Label>
+                                    <asp:Label ID="LblNomeAdmin" runat="server" class="text-white h6 font-italic"></asp:Label>
                                 </div>
                                 <a id="userDropdown" class="text-light ml-1" style="text-decoration: none" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <asp:LinkButton ID="link_logout" class="text-light" Style="text-decoration: none;" runat="server">Logout</asp:LinkButton>&nbsp&nbsp<i class="fa fa-power-off" style="color: darkred"></i></a>
 
                             </div>
 
-                            <div class="sb-sidenav-menu-heading">Armazém</div>
+                            <div class="sb-sidenav-menu-heading">Administração</div>
                             <a class="nav-link" href="Livros.aspx">
                                 <div class="sb-nav-link-icon"><i class="fas fa-box"></i></div>
                                 Livros
                             </a>
 
-                              <a class="nav-link" href="Editoras.aspx">
+                            <a class="nav-link" href="Editoras.aspx">
                                 <div class="sb-nav-link-icon"><i class="fas fa-warehouse"></i></div>
                                 Editoras
                             </a>
@@ -64,14 +64,18 @@
                                 Autores
                             </a>
 
-                            <div class="sb-sidenav-menu-heading">Área Reservada</div>
-                            <a class="nav-link" href="backofficeLogin.aspx">
-                                <div class="sb-nav-link-icon"><i class="fas fa-lock"></i></div>
-                                Administração
+                            <a class="nav-link" href="Encomendas.aspx">
+                                <div class="sb-nav-link-icon"><i class="fas fa-warehouse"></i></div>
+                                Encomendas
                             </a>
+
+                            <a class="nav-link" href="Utilizadores.aspx">
+                                <div class="sb-nav-link-icon"><i class="fas fa-warehouse"></i></div>
+                                Utilizadores
+                            </a>
+
                         </div>
                     </div>
-
                 </nav>
             </div>
 
@@ -90,8 +94,8 @@
         <script src="Recursos/Javascript/main.js"></script>
         <script src="Recursos/Javascript/yearpicker.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js" integrity="sha512-NqYds8su6jivy1/WLoW8x1tZMRD7/1ZfhWG/jcRQLOzV1k1rIODCpMgoBnar5QXshKJGV7vi0LXLNXPoFsM5Zg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-                  <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/izitoast/1.4.0/js/iziToast.min.js" integrity="sha512-Zq9o+E00xhhR/7vJ49mxFNJ0KQw1E1TMWkPTxrWcnpfEFDEXgUiwJHIKit93EW/XxE31HSI5GEOW06G6BF1AtA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
         <script src="../Recursos/Javascript/main.js"></script>
         <script>
             $(() => {
@@ -100,6 +104,7 @@
                         year: new Date().getFullYear()
                     });
                 $('select').niceSelect();
+                $('table').DataTable();
             });
         </script>
     </form>
