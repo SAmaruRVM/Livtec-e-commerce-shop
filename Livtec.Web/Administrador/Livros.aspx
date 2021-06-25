@@ -61,7 +61,7 @@
                                                 <%# Eval("AnoEdicao") %>
                                             </td>
                                             <td style="text-align: center; vertical-align: middle;">
-                                                <img style="height:50px;" alt="Capa do livro (Imagem)" <%# (Eval("Imagem") is null) ? "src='../Recursos/Imagens/Imagem-Livro-Placeholder.png'" : $"src='data:image/png;base64,{Convert.ToBase64String((byte[])Eval("Imagem"))}'" %> />
+                                                <img style="height: 50px;" alt="Capa do livro (Imagem)" <%# (Eval("Imagem") is null) ? "src='../Recursos/Imagens/Imagem-Livro-Placeholder.png'" : $"src='data:image/png;base64,{Convert.ToBase64String((byte[])Eval("Imagem"))}'" %> />
                                             </td>
                                             <td style="text-align: center; vertical-align: middle;">
                                                 <%# Eval("DataCriacao") %>
@@ -232,6 +232,7 @@
 
 
 
+                                
 
                                 </div>
 
@@ -245,6 +246,15 @@
 
                             </div>
 
+
+                            
+                            <div class="form-group">
+                                <label for="CKBListAutoresAssociacaoLivroInserir" class="col-form-label">Associar autores a este livro</label>
+                                    <asp:CheckBoxList runat="server" ID="CKBListAutoresAssociacaoLivroInserir" AutoPostBack="true" ClientIDMode="AutoID">
+                                    </asp:CheckBoxList>
+                            </div>
+                 
+                            
 
                             <div class="custom-file mt-2 mb-4 p-2">
                                 <label for="FPCapaImagemLivroAsync" class="custom-file-label">Capa do livro (Imagem)</label>

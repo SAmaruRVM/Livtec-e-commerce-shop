@@ -3,7 +3,11 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <style>
+        body {
+            overflow: hidden;
+        }
+    </style>
     <div class="col-sm-12 col-md-12 col-lg-12 mt-5">
         <!-- product -->
         <div class="product-content product-wrap clearfix product-deatil">
@@ -40,13 +44,32 @@
                         <div class="tab-pane fade show active p-3" id="sinopse" role="tabpanel" aria-labelledby="sinopse-tab">
                             <asp:Label runat="server" ID="LblSinopseLivro"></asp:Label>
                         </div>
-                        <div class="tab-pane fade" id="opinioes" role="tabpanel" aria-labelledby="opinioes-tab"></div>
+                        <div class="tab-pane fade" id="opinioes" role="tabpanel" aria-labelledby="opinioes-tab">
+
+                            <div class="form-group">
+                                <label for="TBInserirOpiniao" class="col-form-label">Opinião</label>
+                                <asp:TextBox runat="server" ID="TBInserirOpiniao" TextMode="SingleLine" class="form-control rounded-0" Visible="false" />
+                            </div>
+
+                            <asp:Button runat="server" ID="BtnInserirOpiniao" Visible="false" class="btn btn-dark btn-sm mt-2 float-right p-2 d-block" Text="Inserir a minha opinião" OnClick="BtnInserirOpiniao_Click" />
+
+                            <div style="overflow: auto;">
+                                <asp:Repeater runat="server" ID="RptrOpinioesLivro">
+                                    <ItemTemplate>
+                                        <h3><%# Eval("Utilizador.Email") %></h3>
+                                        <p><%# Eval("OpiniaoTexto") %></p>
+                                                <small><%# Eval("DataCriacao") %></small>
+                                    </ItemTemplate>
+                                </asp:Repeater>   
+                            </div>
+
+                        </div>
                     </div>
                     <hr />
                     <div class="row">
                         <div class="col-sm-12 col-md-6 col-lg-6">
                             <asp:LinkButton runat="server" ID="LinkBtnAdicionarLivroAoCarrinho" class="btn btn-success btn-lg"
-                            OnClick="LinkBtnAdicionarLivroAoCarrinho_Click">
+                                OnClick="LinkBtnAdicionarLivroAoCarrinho_Click">
                             <i class="fas fa-cart-plus fa-lg"></i>
                             Adicionar ao meu carrinho
                             </asp:LinkButton>

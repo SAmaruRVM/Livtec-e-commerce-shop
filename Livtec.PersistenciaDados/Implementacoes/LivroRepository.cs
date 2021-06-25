@@ -26,12 +26,12 @@ namespace Livtec.PersistenciaDados.Implementacoes
 
         public Livro EncontrarPorISBN(string isbn)
         {
-            using (SqlDataReader sqlDataReader = new SqlCommand().ExecutarSpComRetorno(StoredProcedure.UspProcurarLivroPorISBN, new Dictionary<string, object> 
+            using (SqlDataReader sqlDataReader = new SqlCommand().ExecutarSpComRetorno(StoredProcedure.UspProcurarLivroPorISBN, new Dictionary<string, object>
             {
                 ["@isbn"] = isbn
-            })) 
+            }))
             {
-                if(sqlDataReader.Read()) 
+                if (sqlDataReader.Read())
                 {
                     return new Livro
                     {
@@ -83,13 +83,20 @@ namespace Livtec.PersistenciaDados.Implementacoes
             }
         }
 
-
+        public void AssociarAutorAoLivro(int idAutor, int idLivro) =>
+                                                                new SqlCommand().ExecutarSPSemRetorno(StoredProcedure.UspAssociarAutorAoLivro, 
+                                                                    new Dictionary<string, object>
+                                                                {
+                                                                    ["@idLivro"] = idLivro,
+                                                                    ["@idAutor"] = idAutor
+                                                                });
+    
 
 
 
         public Livro Inserir(Livro entidade)
         {
-            new SqlCommand().ExecutarSPSemRetorno(StoredProcedure.UspInserirLivro, new Dictionary<string, object> 
+            using (SqlDataReader sqlDataReader = new SqlCommand().ExecutarSpComRetorno(StoredProcedure.UspInserirLivro, new Dictionary<string, object>
             {
                 ["@titulo"] = entidade.Titulo,
                 ["@preco"] = entidade.Preco,
@@ -102,20 +109,25 @@ namespace Livtec.PersistenciaDados.Implementacoes
                 ["@idEditora"] = entidade.Editora.Id,
                 ["@imagemCapa"] = entidade.Imagem,
                 ["@dataCriacao"] = entidade.DataCriacao
-            });
-
+            }))
+            {
+                if (sqlDataReader.Read())
+                {
+                    entidade.Id = int.Parse(sqlDataReader["IdLivroInserido"].ToString());
+                }
+            }
             return entidade;
         }
 
         public IEnumerable<Livro> Paginacao(int numeroPagina = 1, int numeroLivros = 10)
         {
-            using(SqlDataReader sqlDataReader = new SqlCommand().ExecutarSpComRetorno(StoredProcedure.UspLivrosPaginacao, new Dictionary<string, object> 
+            using (SqlDataReader sqlDataReader = new SqlCommand().ExecutarSpComRetorno(StoredProcedure.UspLivrosPaginacao, new Dictionary<string, object>
             {
                 ["@pagina"] = numeroPagina,
                 ["@numeroLivros"] = numeroLivros
             }))
             {
-                while(sqlDataReader.Read()) 
+                while (sqlDataReader.Read())
                 {
                     yield return new Livro
                     {

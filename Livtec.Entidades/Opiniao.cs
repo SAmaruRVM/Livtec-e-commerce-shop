@@ -8,6 +8,6 @@ namespace Livtec.Entidades
         public string OpiniaoTexto { get; set; }
         public Utilizador Utilizador { get; set; }
         public Livro Livro { get; set; }
-        public DateTime DataCriacao { get; set; }
+        public DateTime? DataCriacao { get; set; }
     }
 }

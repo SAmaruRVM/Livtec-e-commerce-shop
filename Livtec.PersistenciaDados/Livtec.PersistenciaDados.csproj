@@ -68,6 +68,7 @@
     <Compile Include="Implementacoes\EditoraRepository.cs" />
     <Compile Include="Implementacoes\EncomendasRepository.cs" />
     <Compile Include="Implementacoes\LivroRepository.cs" />
+    <Compile Include="Implementacoes\MoradaRepository.cs" />
     <Compile Include="Implementacoes\OpiniaoRepository.cs" />
     <Compile Include="Implementacoes\UtilizadorRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />

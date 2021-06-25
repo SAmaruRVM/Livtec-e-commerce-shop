@@ -69,6 +69,33 @@ namespace Livtec.Web
         protected global::System.Web.UI.WebControls.Label LblSinopseLivro;
 
         /// <summary>
+        /// TBInserirOpiniao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TBInserirOpiniao;
+
+        /// <summary>
+        /// BtnInserirOpiniao control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BtnInserirOpiniao;
+
+        /// <summary>
+        /// RptrOpinioesLivro control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RptrOpinioesLivro;
+
+        /// <summary>
         /// LinkBtnAdicionarLivroAoCarrinho control.
         /// </summary>
         /// <remarks>

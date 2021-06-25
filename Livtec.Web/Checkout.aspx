@@ -37,6 +37,11 @@
                 </ul>
 
 
+                <asp:DropDownList runat="server" ID="DDLMoradasUtilizador" AutoPostBack="true">
+
+                </asp:DropDownList>
+
+
             </div>
             <div class="col-md-8 order-md-1">
                 <h4 class="mb-3">Billing address</h4>

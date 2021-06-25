@@ -3,6 +3,7 @@ using Livtec.PersistenciaDados.Implementacoes;
 using System;
 using System.Data.SqlClient;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace Livtec.Web
 {
@@ -19,16 +20,26 @@ namespace Livtec.Web
             tupleCarrinho = new CarrinhoRepository().TotalProdutosValorTotal(utilizadorLogado.Id);
 
             LblValorTotalCarrinho.Text = tupleCarrinho.valorTotalCarrinho + "€";
-        }
 
-        protected void BtnCheckOut_Click(object sender, EventArgs e) 
+
+            foreach (Morada morada in new MoradaRepository().SemPaginacao())
+            {
+                DDLMoradasUtilizador.Items.Add(new ListItem
+                {
+                    Text = $"{morada.Rua} {morada.Fracao} ({morada.CodigoPostal}), {morada.Cidade}",
+                    Value = morada.Id.ToString()
+                });
+
+            }
+        }
+        protected void BtnCheckOut_Click(object sender, EventArgs e)
         {
-            try 
+            try
             {
                 new CarrinhoRepository().CheckOut(((Utilizador)Session["UtilizadorLogado"]).Id);
 
             }
-            catch(SqlException sqlException) 
+            catch (SqlException sqlException)
             {
                 // Javascript
                 var mostrarNotificacao = "mostrarNotificacao('Erro ao realizar o checkout', " +

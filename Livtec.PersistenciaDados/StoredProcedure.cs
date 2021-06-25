@@ -25,6 +25,10 @@
         UspProcurarLivroPorTituloOuISBN,
         UspTodosUtilizadores,
         UspEliminarUtilizadorPorId,
-        UspCheckOut
+        UspCheckOut,
+        UspAssociarAutorAoLivro,
+        UspInserirOpiniao,
+        UspOpinioesDeUmDeterminadoLivro,
+        UspTodasMoradas
     }
 }

@@ -1,12 +1,12 @@
-﻿using Livtec.PersistenciaDados.Implementacoes;
+﻿using AjaxControlToolkit;
+using Livtec.Entidades;
+using Livtec.Logica.Extensions;
+using Livtec.PersistenciaDados.Implementacoes;
+using Livtec.Web.Extensions;
 using System;
 using System.Data.SqlClient;
-using Livtec.Entidades;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Livtec.Web.Extensions;
-using Livtec.Logica.Extensions;
-using AjaxControlToolkit;
 
 namespace Livtec.Web.Administrador
 {
@@ -15,8 +15,23 @@ namespace Livtec.Web.Administrador
         private byte[] _dadosBinariosImagem = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            RptrLivrosTable.DataSource = new LivroRepository().SemPaginacao();
-            RptrLivrosTable.DataBind();
+
+
+            if (!(IsPostBack))
+            {
+                RptrLivrosTable.DataSource = new LivroRepository().SemPaginacao();
+                RptrLivrosTable.DataBind();
+
+
+                foreach (Autor autor in new AutorRepository().SemPaginacao())
+                {
+                    CKBListAutoresAssociacaoLivroInserir.Items.Add(new ListItem
+                    {
+                        Value = autor.Id.ToString(),
+                        Text = autor.Nome
+                    });
+                }
+            }
         }
 
 
@@ -43,9 +58,10 @@ namespace Livtec.Web.Administrador
         {
             try
             {
+                var livroRepository = new LivroRepository();
 
 
-                new LivroRepository().Inserir(new Livro
+                Livro livroInserido = livroRepository.Inserir(new Livro
                 {
                     Titulo = TBTituloAdicionarLivro.Text,
                     Idioma = TBIdiomaAdicionarLivro.Text,
@@ -58,6 +74,15 @@ namespace Livtec.Web.Administrador
                     TipoLivro = (TipoLivro)int.Parse(DDLTipoLivroAdicionarLivro.SelectedValue),
                     Imagem = _dadosBinariosImagem // dadosBinariosImagem
                 });
+
+
+                foreach (ListItem listItem in CKBListAutoresAssociacaoLivroInserir.Items)
+                {
+                    if (listItem.Selected)
+                    {
+                        livroRepository.AssociarAutorAoLivro(int.Parse(listItem.Value), livroInserido.Id);
+                    }
+                }
 
 
 
